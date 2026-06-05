@@ -1,278 +1,236 @@
-# JavaScript_performance_test 
-*Workspace Reservation System (SPA)**
+Workspace Reservation System SPA
 
-## Overview
+Overview
 
-This project involves developing a Single Page Application (SPA) using JavaScript, Vite, Tailwind CSS, and a JSON server.
+Workspace Reservation System is a Single Page Application (SPA) built with JavaScript, Vite, TailwindCSS, and JSON Server.
 
-The application simulates a workspace reservation system where users can authenticate, navigate protected paths, and manage information consumed from a simulated API.
-
-The main objective is to assess knowledge related to:
-
-- SPA Architecture
-- Authentication
-- Role Management
-- Path Protection
-- Session Persistence
-- API Consumption
-- DOM Manipulation
-- Code Modularization
-- Development Best Practices
+The application allows users to authenticate, create workspace reservations, and manage reservations according to their role. Administrators can view all reservations, approve or reject requests, and delete reservations, while regular users can only view and manage their own reservations.
 
 ---
 
-## Problem Context
+Features
 
-A company has several shared workspaces:
+Authentication
 
-- Meeting Rooms
-- Private Offices
-- Coworking Spaces
-- Auditoriums
+- User login with email and password.
+- Session persistence using Local Storage.
+- Protected routes for authenticated users.
+- Automatic redirection based on authentication status.
 
-To avoid scheduling conflicts and improve internal organization, a platform is needed to manage reservations for these spaces.
+Reservation Management
 
-The application must include two roles:
+- Create new workspace reservations.
+- View reservation details.
+- Display reservation status:
+  - Pending
+  - Approved
+  - Rejected
 
-### Administrator (admin)
+Role-Based Access
 
-Can:
+Administrator
 
-- View all reservations
-- Create reservations
-- Edit reservations
-- Delete reservations
-- Approve or reject reservations
-- Manage workspaces
-- Access administrative modules
+- View all reservations.
+- Approve reservations.
+- Reject reservations.
+- Delete reservations.
 
-### User (user)
+User
 
-Can:
+- View only their own reservations.
+- Create new reservations.
 
-- Check available spaces
-- Create reservations
-- View only their own reservations
-- Modify pending reservations
-- Cancel their own reservations
+Navigation
+
+- SPA routing without page reloads.
+- Protected routes.
+- Custom 404 page.
 
 ---
 
-## Technologies used
+Technologies Used
 
-- JavaScript ES6+
+- JavaScript (ES Modules)
 - Vite
-- Tailwind CSS
+- TailwindCSS
 - JSON Server
-- Concurrently
 - HTML5
 - CSS3
 
 ---
 
-## Delivered base structure
+Project Structure
 
-```txt
-src
-├── assets
-├── components
-│ └── Sidebar.js
-├── controllers
-│ └── login.controller.js
-├── router
-│ └── router.js
-├── views
-│ ├── loginView.js
-│ ├── homeView.js
-│ └── notFound.js
+src/
+│
+├── api/
+│   └── http.js
+│
+├── components/
+│   ├── ReservationCard.js
+│   └── Sidebar.js
+│
+├── controllers/
+│   ├── home.controller.js
+│   ├── login.controller.js
+│   └── reservation.controller.js
+│
+├── router/
+│   └── router.js
+│
+├── services/
+│   └── reservation.service.js
+│
+├── views/
+│   ├── homeView.js
+│   ├── loginView.js
+│   ├── reservations.js
+│   └── notFound.js
+│
 ├── utils.js
-├── main.js
-└── style.css
-```
+├── style.css
+└── main.js
 
 ---
 
-## Architecture Explanation
+Installation
 
-### Components
+Clone the repository
 
-Contains reusable interface components.
+git clone <repository-url>
+cd project
 
-Example:
+Install dependencies
 
-```txt
-components/
-└── Sidebar.js
-```
-
-The Sidebar can be reused in different views and centralizes the main system navigation.
-
-### Controllers
-
-Contain the application's business logic and events.
-
-Example:
-
-```txt
-controllers/
-└── login.controller.js
-```
-
-Responsibilities:
-
-- Capture form events
-- Validate credentials
-- Consume the API
-- Manage login
-- Redirect users
-
-### Views
-
-Represent the application's screens.
-
-Currently:
-
-- Login
-- Home
-- Not Found (404)
-
-Each view returns an HTML template that is dynamically rendered within the main container.
-
-### Router
-
-Manages the SPA's internal navigation.
-
-Responsibilities:
-
-- Render views
-- Manage routes
-- Protect private views
-- Redirect users
-- Display 404 pages
-
-### Utils
-
-Contains reusable helper functions.
-
-Currently:
-
-- Save session
-- Get session
-- Delete session
-- Validate authentication
-
----
-
-## Simulated API
-
-The application uses JSON Server to simulate a REST API.
-
-Example administrator user:
-
-```json
-{
-"id": 1,
-"email": "admin@test.com",
-"password": "123456",
-"role": "admin"
-}
-```
-
-Example standard user:
-
-```json
-{
-"id": 2,
-"email": "user@test.com",
-"password": "123456",
-"role": "user"
-}
-```
-
----
-
-## Environment Setup
-
-Install dependencies:
-
-```bash
 npm install
-```
 
-Run project:
+---
 
-```bash
+Running the Project
+
+Start the development server and the mock API:
+
 npm run dev
-```
 
-This command simultaneously starts:
+This command runs:
 
-- Vite
-- JSON Server
-
-thanks to the use of Concurrently.
+- Vite development server
+- JSON Server on port 3001
 
 ---
 
-## Suggested Scripts
+Mock API
 
-```json
-{
-"scripts": {
-"client": "vite",
-"server": "json-server --watch db.json --port 3000",
-"dev": "concurrently \"npm run client\" \"npm run server\""
-}
-}
-```
+JSON Server uses the "db.json" file as a fake backend.
 
----
+Base URL:
 
-## Test Credentials
+http://localhost:3001
 
-Administrator:
+Available Resources
 
-```txt
-admin@test.com
-123456
-```
+Users
 
-User:
+GET /users
 
-```txt
-user@test.com
-123456
-```
+Reservations
+
+GET    /reservations
+POST   /reservations
+PATCH  /reservations/:id
+DELETE /reservations/:id
 
 ---
 
-## Included Basic Features
+Test Accounts
 
-- Functional Login
-- API Consumption via JSON Server
-- Session Persistence with LocalStorage
-- Logout
-- SPA Router
-- Basic Route Protection
-- Reusable Sidebar
-- Custom 404 Page
-- Configuration of Tailwind CSS
-- Vite Configuration
+Administrator
+
+Email: admin@test.com
+Password: A123456
+
+User
+
+Email: user@test.com
+Password: A123456
+
+User 2
+
+Email: user2@test.com
+Password: A123456
 
 ---
 
-## Modules pending development
+Application Flow
 
-Coders must implement:
+Login
 
-- Reservations CRUD
-- Space CRUD
-- Role Management
-- Advanced Guards
-- Permission Validations
-- Administrative Dashboard
-- Statistics
-- Filters and Searches
-- Notifications
-- Business Rules
+1. User enters credentials.
+2. Application validates the user against the API.
+3. User information is stored in Local Storage.
+4. User is redirected to the Home page.
 
+Home
+
+- Administrators see all reservations.
+- Regular users see only their own reservations.
+
+Create Reservation
+
+1. User completes the reservation form.
+2. Reservation is stored through the API.
+3. Status is automatically set to "pending".
+
+Reservation Approval
+
+Administrators can:
+
+- Approve reservations
+- Reject reservations
+- Delete reservations
+
+---
+
+Route Protection
+
+Protected routes:
+
+/home
+/reservations
+
+Unauthenticated users attempting to access protected pages are redirected to the login screen.
+
+---
+
+Session Management
+
+Session data is stored in Local Storage:
+
+localStorage.setItem("user", JSON.stringify(user));
+
+Available utilities:
+
+- saveSession()
+- getSession()
+- removeSession()
+- isAuthenticated()
+- isAdmin()
+
+---
+
+Future Improvements
+
+- Reservation conflict validation.
+- Advanced filtering and search.
+- User registration.
+- Password encryption.
+- Responsive mobile design improvements.
+- Reservation history.
+- Real backend integration.
+- Unit and integration testing.
+
+---
+
+Author
+
+Developed as a SPA architecture and JavaScript performance assessment project using Vite, TailwindCSS, and JSON Server.
