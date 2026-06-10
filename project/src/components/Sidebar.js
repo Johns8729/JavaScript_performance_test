@@ -2,7 +2,6 @@ import { removeSession } from "@/utils";
 import { navigateTo } from "@/router/router";
 
 export default function Sidebar() {
-  
   setTimeout(() => {
     document.querySelector("#logoutBtn")?.addEventListener("click", () => {
       removeSession();
@@ -11,15 +10,44 @@ export default function Sidebar() {
   });
 
   return `
-    <aside class="w-52 bg-gray-500 text-white min-h-screen p-4 flex flex-col gap-4">
-      <h2 class="text-lg font-bold">Reservas</h2>
-      <nav class="flex flex-col gap-2">
-        <a href="/home" data-link class="px-3 py-2 bg-indigo-700 rounded hover:bg-indigo-950">Inicio</a>
-        <a href="/reservations" data-link class="px-3 py-2 bg-indigo-700 rounded hover:bg-indigo-950">Reservas</a>
+    <aside class="w-64 bg-slate-800 text-white min-h-screen p-6 flex flex-col shadow-xl">
+
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-cyan-400">
+          Sistema de Reservas
+        </h2>
+        <p class="text-slate-400 text-sm mt-1">
+          Panel de gestión
+        </p>
+      </div>
+
+      <nav class="flex flex-col gap-3">
+
+        <a
+          href="/home"
+          data-link
+          class="px-4 py-3 bg-slate-700 rounded-lg hover:bg-cyan-600 transition"
+        >
+          Panel
+        </a>
+
+        <a
+          href="/reservations"
+          data-link
+          class="px-4 py-3 bg-slate-700 rounded-lg hover:bg-cyan-600 transition"
+        >
+          Nueva Reserva
+        </a>
+
       </nav>
-      <button id="logoutBtn" class="mt-auto text-left px-3 py-2 text-red-600 hover:bg-red-950 hover:text-white rounded">
+
+      <button
+        id="logoutBtn"
+        class="mt-auto px-4 py-3 bg-red-600 rounded-lg hover:bg-red-700 transition text-white"
+      >
         Cerrar sesión
       </button>
+
     </aside>
   `;
 }

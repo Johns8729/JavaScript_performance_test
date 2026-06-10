@@ -2,26 +2,37 @@
   "users": [
     {
       "id": "1",
-      "email": "admin@test.com",
-      "password": "A123456",
+      "email": "admin@jh.com",
+      "password": "J123456",
       "role": "admin",
       "name": "Administrador"
     },
     {
       "id": "2",
-      "email": "user@test.com",
-      "password": "A123456",
+      "email": "user@sh.com",
+      "password": "J123456",
       "role": "user",
       "name": "Usuario"
     },
     {
       "id": "3",
-      "email": "user2@test.com",
-      "password": "A123456",
+      "email": "user2@el.com",
+      "password": "J123456",
       "role": "user",
       "name": "Usuario 2"
     }
   ],
-  "reservations": [],
+  "reservations": [
+    {
+      "userId": "2",
+      "workspace": "sjsjjs",
+      "date": "2007-02-24",
+      "startHour": "21:44",
+      "endHour": "20:46",
+      "reason": "sjdjddjdj",
+      "status": "pending",
+      "id": "jPao_I9q3w8"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
