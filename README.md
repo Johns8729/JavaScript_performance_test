@@ -1,66 +1,68 @@
-Workspace Reservation System SPA
+# Workspace Reservation System SPA
 
-Overview
+## Overview
 
-Workspace Reservation System is a Single Page Application (SPA) built with JavaScript, Vite, TailwindCSS, and JSON Server.
+Workspace Reservation System is a Single Page Application (SPA) developed with JavaScript, Vite, TailwindCSS, and JSON Server.
 
 The application allows users to authenticate, create workspace reservations, and manage reservations according to their role. Administrators can view all reservations, approve or reject requests, and delete reservations, while regular users can only view and manage their own reservations.
 
 ---
 
-Features
+## Features
 
-Authentication
+### Authentication
 
-- User login with email and password.
-- Session persistence using Local Storage.
-- Protected routes for authenticated users.
-- Automatic redirection based on authentication status.
+* User login with email and password.
+* Session persistence using Local Storage.
+* Protected routes for authenticated users.
+* Automatic redirection based on authentication status.
 
-Reservation Management
+### Reservation Management
 
-- Create new workspace reservations.
-- View reservation details.
-- Display reservation status:
-  - Pending
-  - Approved
-  - Rejected
+* Create new workspace reservations.
+* View reservation details.
+* Display reservation status:
 
-Role-Based Access
+  * Pending
+  * Approved
+  * Rejected
 
-Administrator
+### Role-Based Access
 
-- View all reservations.
-- Approve reservations.
-- Reject reservations.
-- Delete reservations.
+#### Administrator
 
-User
+* View all reservations.
+* Approve reservations.
+* Reject reservations.
+* Delete reservations.
 
-- View only their own reservations.
-- Create new reservations.
+#### User
 
-Navigation
+* View only their own reservations.
+* Create new reservations.
 
-- SPA routing without page reloads.
-- Protected routes.
-- Custom 404 page.
+### Navigation
 
----
-
-Technologies Used
-
-- JavaScript (ES Modules)
-- Vite
-- TailwindCSS
-- JSON Server
-- HTML5
-- CSS3
+* SPA routing without page reloads.
+* Protected routes.
+* Custom 404 page.
 
 ---
 
-Project Structure
+## Technologies Used
 
+* JavaScript (ES Modules)
+* Vite
+* TailwindCSS
+* JSON Server
+* HTML5
+* CSS3
+
+---
+
+## Project Structure
+
+```text
 src/
 │
 ├── api/
@@ -90,147 +92,170 @@ src/
 ├── utils.js
 ├── style.css
 └── main.js
+```
 
 ---
 
-Installation
+## Installation
 
-Clone the repository
+### Clone the Repository
 
+```bash
 git clone <repository-url>
 cd project
+```
 
-Install dependencies
+### Install Dependencies
 
+```bash
 npm install
+```
 
 ---
 
-Running the Project
+## Running the Project
 
 Start the development server and the mock API:
 
+```bash
 npm run dev
+```
 
 This command runs:
 
-- Vite development server
-- JSON Server on port 3001
+* Vite Development Server
+* JSON Server on Port 3001
 
 ---
 
-Mock API
+## Mock API
 
-JSON Server uses the "db.json" file as a fake backend.
+JSON Server uses the `db.json` file as a fake backend.
 
-Base URL:
+### Base URL
 
+```text
 http://localhost:3001
+```
 
-Available Resources
+### Available Resources
 
-Users
+#### Users
 
+```http
 GET /users
+```
 
-Reservations
+#### Reservations
 
+```http
 GET    /reservations
 POST   /reservations
 PATCH  /reservations/:id
 DELETE /reservations/:id
+```
 
 ---
 
-Test Accounts
+## Test Accounts
 
-Administrator
+### Administrator
 
-Email: admin@test.com
-Password: A123456
+```text
+Email: admin@gmail.com
+Password: 123456
+```
 
-User
+### User
 
-Email: user@test.com
-Password: A123456
+```text
+Email: user@gmail.com
+Password: 123456
+```
 
-User 2
+### User 2
 
-Email: user2@test.com
-Password: A123456
+```text
+Email: user2@gmail.com
+Password: 123456
+```
 
 ---
 
-Application Flow
+## Application Flow
 
-Login
+### Login
 
 1. User enters credentials.
 2. Application validates the user against the API.
 3. User information is stored in Local Storage.
 4. User is redirected to the Home page.
 
-Home
+### Home
 
-- Administrators see all reservations.
-- Regular users see only their own reservations.
+* Administrators can view all reservations.
+* Regular users can view only their own reservations.
 
-Create Reservation
+### Create Reservation
 
 1. User completes the reservation form.
 2. Reservation is stored through the API.
-3. Status is automatically set to "pending".
+3. Reservation status is automatically set to **Pending**.
 
-Reservation Approval
+### Reservation Approval
 
 Administrators can:
 
-- Approve reservations
-- Reject reservations
-- Delete reservations
+* Approve reservations.
+* Reject reservations.
+* Delete reservations.
 
 ---
 
-Route Protection
+## Route Protection
 
-Protected routes:
+### Protected Routes
 
+```text
 /home
 /reservations
+```
 
-Unauthenticated users attempting to access protected pages are redirected to the login screen.
+Unauthenticated users attempting to access protected pages are automatically redirected to the login screen.
 
 ---
 
-Session Management
+## Session Management
 
 Session data is stored in Local Storage:
 
+```javascript
 localStorage.setItem("user", JSON.stringify(user));
+```
 
-Available utilities:
+### Available Utilities
 
-- saveSession()
-- getSession()
-- removeSession()
-- isAuthenticated()
-- isAdmin()
-
----
-
-Future Improvements
-
-- Reservation conflict validation.
-- Advanced filtering and search.
-- User registration.
-- Password encryption.
-- Responsive mobile design improvements.
-- Reservation history.
-- Real backend integration.
-- Unit and integration testing.
+* `saveSession()`
+* `getSession()`
+* `removeSession()`
+* `isAuthenticated()`
+* `isAdmin()`
 
 ---
 
-Author
+## Future Improvements
+
+* Reservation conflict validation.
+* Advanced filtering and search.
+* User registration.
+* Password encryption.
+* Responsive mobile design improvements.
+* Reservation history.
+* Real backend integration.
+* Unit and integration testing.
+
+---
+
+## Author
 
 Developed as a SPA architecture and JavaScript performance assessment project using Vite, TailwindCSS, and JSON Server.
