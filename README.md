@@ -162,22 +162,22 @@ DELETE /reservations/:id
 ### Administrator
 
 ```text
-Email: admin@gmail.com
-Password: 123456
+Email: admin@jh.com
+Password: J123456
 ```
 
 ### User
 
 ```text
-Email: user@gmail.com
-Password: 123456
+Email: user@sh.com
+Password: J123456
 ```
 
 ### User 2
 
 ```text
-Email: user2@gmail.com
-Password: 123456
+Email: user2@el.com
+Password: J123456
 ```
 
 ---
